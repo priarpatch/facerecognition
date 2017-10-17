@@ -30,7 +30,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     # grab the raw NumPy array representing the image, then initialize the timestamp
     # and occupied/unoccupied text
     image = frame.array
-
+    img=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+    image=cv2.resize(img,None, fx=0.25,fy=0.25)
+    cv2.rectangle(image,(30,10),(130,110),(255,255,255),3)
+    
     # show the frame
     cv2.imshow("Frame", image)
     key = cv2.waitKey(1) & 0xFF
